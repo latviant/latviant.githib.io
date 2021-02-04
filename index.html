@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html> 
+
+<head>
+<meta charset="utf-8" />
+
+<style type="text/css">
+
+body {
+ background: black;
+ color:  red;
+ margin:3 4 5 5pt;
+ font-family: 'Montserrat';
+ font-size: 18pt;
+}
+
+h1 {
+    font-size: 45px;
+    text-align: right;
+
+}
+ 
+ p, li {
+    font-size: 20px
+    line-height: 2;
+    letter-spacing: 2px;
+
+ }
+a {
+ color:#117;
+ text-decoration:none;
+}
+
+#main {
+ padding-top:18px;
+ width:100%;
+}
+
+#main div {
+ font-weight:bold;
+ padding-bottom:10px;
+}
+
+</style>
+
+<script type="text/javascript">
+var t = 0,
+one = ['Каракатица гуляет по заснеженной москве; есть у нее и свои сумрачные моменты; я жду, и все вокруг моего ожидания застигнуто ирреальностью; в кафе я разглядываю других людей, которые заходят, болтают, шутят, спокойно читают: они-то никого не ждут.', 'Ожидаемый мною человек не реален.', 'При психическом переносе всегда ждешь — у врача, преподавателя, психоаналитика.', 'Я пугаюсь всего, что искажает Образ.', 'Каракатица курит у дома, в котором есть каркатица', 'Я должен походить на того, кого люблю, Я утверждаю (и это доставляет мне удовольствие) сущностное сходство между другим и мною.', 'Открой мне дверь.'],
+two = ['Как кончается любовь?', 'Тогда не нужно ли, именно потому, что я люблю его, скрыть, сколь сильно я его люблю?', 'И тогда все переворачивается: поскольку другой страдает без меня, к чему страдать на его месте?', 'Кто такой герой?', 'Мне скажут: этот тип любви не жизнеспособен. Но как оценить жизнеспособность? Почему жизнеспособность обязательно Благо?'],
+three = ['а ты скажи же мой друг ответишь ли ты мне наконец я тоскую по тебе я хочу тебя я грежу о тебе за тебя против тебя ответь мне твое имя как разлитый аромат твой цвет вспыхивает среди шипов верни мне мое сердце с молодым вином укрой меня утром я задыхаюсь под этой маской осушенной выровненной кожи ничего не существует кроме желания.', 'В этот вечер я вернулся в отель в одиночку; другой решил возвратиться позже ночью.', '“Психотик живет в боязни крушения (разнообразные психозы служат лишь средствами защиты от него).'],
+four = ['Я вас любил?' , 'Куда идете вы?' , 'Россия - великая страна.' , 'А что сделал ты?'];
+
+
+
+
+function random_range(maximum) {
+    return Math.floor(Math.random() * (maximum + 1));
+}
+
+function select_element(array) {
+    return array[random_range(array.length - 1)];
+}
+
+function phrase() {
+    var text = select_element(one) + ' ' + select_element(two) + ' ' + select_element(three) +' '+select_element(four);
+    
+    return text;
+}
+
+function paragraph() {
+    var last, text, main = document.getElementById('main');
+    if (25 > t) {
+        t += 1;
+    } else {
+        main.removeChild(document.getElementById('main').firstChild);
+    }
+    last = document.createElement('div');
+    text = phrase();
+    last.innerHTML = text;
+    main.appendChild(last);
+}
+
+function produce_paragraph() {
+    paragraph();
+    setInterval(paragraph, 3000);
+}
+
+</script>
+  <title>Учусь.</title>
+</head>
+<body onload="produce_paragraph();">
+<div id="main"></div>
+</body>
+</html>
+
